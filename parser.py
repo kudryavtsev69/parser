@@ -7,7 +7,7 @@ HEADERS = {'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KH
                          'YaBrowser/21.9.1.600 (beta) Yowser/2.5 Safari/537.36',
            'accept': '*/*'}
 
-FILE = 'news.txt'
+FILE = 'news.csv'
 
 def get_html(url, params=None): # Запрос
     r = requests.get(url, headers=HEADERS, params=params)
