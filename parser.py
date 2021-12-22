@@ -17,17 +17,16 @@ def get_content(html): # Получение контента
     news = []
     for item in items:
         news.append({
-            'title': item.find('a', class_='list-item__title color-font-hover-only').get_text()
+            'title': item.find('a', class_='list-item__title color-font-hover-only').get_text(strip=True), # Получаем
+            'link': item.find('a', class_='list-item__title color-font-hover-only').get('href'),
+            #'time': item.find('div', class_='list-item__date').get_text()
         })
-    print(news)
-
-
-    #print(items)
+    return news
 
 def parse():  #  Парсинг сайта новостей
     html = get_html(URL)
     if html.status_code == 200:
-        get_content(html.text)
+        print(get_content(html.text))
     else:
         print('Error')
 
