@@ -12,7 +12,17 @@ def get_html(url, params=None): # Запрос
 
 def get_content(html): # Получение контента
     soup = BeautifulSoup(html, 'html.parser')
-    items = soup.find_all('a', class_='list-item__title color-font-hover-only')
+    items = soup.find_all('div', class_='list-item__content')
+
+    news = []
+    for item in items:
+        news.append({
+            'title': item.find('a', class_='list-item__title color-font-hover-only').get_text()
+        })
+    print(news)
+
+
+    #print(items)
 
 def parse():  #  Парсинг сайта новостей
     html = get_html(URL)
